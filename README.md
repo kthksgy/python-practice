@@ -1,1 +1,2 @@
 # python-practice
+気の迷いで書いたPythonスクリプトを保存するためのリポジトリです
