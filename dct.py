@@ -54,11 +54,21 @@ class DCT:
 if __name__ == "__main__":
     input_size = 8
     dct = DCT(input_size)
+    plt.subplots_adjust(left=0.1, right=0.65, wspace=0.1)
 
     for i in range(int(math.pow(input_size, 2))):
         plt.subplot(input_size, input_size, i + 1)
+        plt.tick_params(labelbottom=False,
+                labelleft=False,
+                labelright=False,
+                labeltop=False,
+                bottom=False,
+                left=False,
+                right=False,
+                top=False)
         data = np.zeros(int(math.pow(input_size, 2)))
         data[i] = 1
         data = dct.idct2(data.reshape((input_size, input_size)))
         plt.imshow(data, 'gray')
-    plt.show()
+    # plt.show()
+    plt.savefig('dct.png', bbox_inches='tight', pad_inches=0, transparent=True)
