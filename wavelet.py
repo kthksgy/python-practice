@@ -9,6 +9,11 @@ def uint8(x):
     x = np.where(x < 0, 0, x)
     return x.astype(np.uint8)
 
+Q_EPSILON = 5.5
+Q_MICRO = 8
+DELTA_B = np.power(2, 8 - Q_EPSILON) * (1 + Q_MICRO / np.power(2, 11))
+print(DELTA_B)
+
 
 def dwt2d(x, lk, hk, nl=3):
     if len(x.shape) == 2:
@@ -41,6 +46,9 @@ def dwt2d(x, lk, hk, nl=3):
         w = w // 2
         
         print(src.shape)
+    print(ret)
+    ret = np.sign(ret) * (np.abs(ret) // DELTA_B)
+    print(ret)
     return ret
 
 LCOEF_5_3 = np.asarray([
